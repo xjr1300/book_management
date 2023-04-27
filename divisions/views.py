@@ -25,34 +25,44 @@ class DivisionFormMixin:
     fields = ("code", "name")
 
 
-class DivisionListView(DivisionViewMixin, generic.ListView):
-    """部署一覧クラスビュー"""
+class PageTitleMixin(generic.base.ContextMixin):
+    """ページタイトルミックスイン"""
+
+    title = None
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         ctx = super().get_context_data(**kwargs)
-        ctx["title"] = "部署一覧"
+        ctx["title"] = self.title
         return ctx
+
+
+class DivisionListView(DivisionViewMixin, PageTitleMixin, generic.ListView):
+    """部署一覧クラスビュー"""
+
+    title = "部署一覧"
 
 
 class DivisionDetailView(
-    DivisionViewMixin, DivisionSingleObjectMixin, generic.DetailView
+    DivisionViewMixin, DivisionSingleObjectMixin, PageTitleMixin, generic.DetailView
 ):
     """部署詳細クラスビュー"""
 
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        ctx = super().get_context_data(**kwargs)
-        ctx["title"] = "部署詳細"
-        return ctx
+    title = "部署詳細"
 
 
 class DivisionCreateView(
-    DivisionViewMixin, DivisionSingleObjectMixin, DivisionFormMixin, generic.CreateView
+    DivisionViewMixin,
+    DivisionSingleObjectMixin,
+    DivisionFormMixin,
+    PageTitleMixin,
+    generic.CreateView,
 ):
     """部署登録クラスビュー"""
 
+    title = "部署登録"
+
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         ctx = super().get_context_data(**kwargs)
-        ctx["title"] = "部署登録"
         ctx["action"] = "登録"
         return ctx
 
@@ -61,13 +71,18 @@ class DivisionCreateView(
 
 
 class DivisionUpdateView(
-    DivisionViewMixin, DivisionSingleObjectMixin, DivisionFormMixin, generic.UpdateView
+    DivisionViewMixin,
+    DivisionSingleObjectMixin,
+    DivisionFormMixin,
+    PageTitleMixin,
+    generic.UpdateView,
 ):
     """部署更新クラスビュー"""
 
+    title = "部署更新"
+
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         ctx = super().get_context_data(**kwargs)
-        ctx["title"] = "部署更新"
         ctx["action"] = "更新"
         return ctx
 
@@ -81,13 +96,9 @@ class DivisionUpdateView(
 
 
 class DivisionDeleteView(
-    DivisionViewMixin, DivisionSingleObjectMixin, generic.DeleteView
+    DivisionViewMixin, DivisionSingleObjectMixin, PageTitleMixin, generic.DeleteView
 ):
     """部署削除クラスビュー"""
 
+    title = "部署削除"
     success_url = reverse_lazy("divisions:division-list")
-
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        ctx = super().get_context_data(**kwargs)
-        ctx["title"] = "部署削除"
-        return ctx
