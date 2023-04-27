@@ -4,3 +4,4 @@ from django.apps import AppConfig
 class DivisionsConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "divisions"
+    verbose_name = "部署アプリ"
