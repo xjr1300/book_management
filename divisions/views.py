@@ -7,10 +7,14 @@ from django.views import generic
 from .models import Division
 
 
-class DivisionListView(generic.ListView):
-    """部署一覧クラスビュー"""
+class DivisionViewMixin:
+    """部署ビューミックスイン"""
 
     model = Division
+
+
+class DivisionListView(DivisionViewMixin, generic.ListView):
+    """部署一覧クラスビュー"""
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         ctx = super().get_context_data(**kwargs)
@@ -18,10 +22,9 @@ class DivisionListView(generic.ListView):
         return ctx
 
 
-class DivisionDetailView(generic.DetailView):
+class DivisionDetailView(DivisionViewMixin, generic.DetailView):
     """部署詳細クラスビュー"""
 
-    model = Division
     pk_url_kwarg = "code"
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
@@ -30,10 +33,9 @@ class DivisionDetailView(generic.DetailView):
         return ctx
 
 
-class DivisionCreateView(generic.CreateView):
+class DivisionCreateView(DivisionViewMixin, generic.CreateView):
     """部署登録クラスビュー"""
 
-    model = Division
     pk_url_kwarg = "code"
     fields = ("code", "name")
 
@@ -47,10 +49,9 @@ class DivisionCreateView(generic.CreateView):
         return reverse("divisions:division-detail", kwargs={"code": self.object.code})
 
 
-class DivisionUpdateView(generic.UpdateView):
+class DivisionUpdateView(DivisionViewMixin, generic.UpdateView):
     """部署更新クラスビュー"""
 
-    model = Division
     pk_url_kwarg = "code"
     fields = ("code", "name")
 
@@ -69,10 +70,9 @@ class DivisionUpdateView(generic.UpdateView):
         return reverse("divisions:division-detail", kwargs={"code": self.object.code})
 
 
-class DivisionDeleteView(generic.DeleteView):
+class DivisionDeleteView(DivisionViewMixin, generic.DeleteView):
     """部署削除クラスビュー"""
 
-    model = Division
     pk_url_kwarg = "code"
     success_url = reverse_lazy("divisions:division-list")
 
