@@ -1,12 +1,12 @@
-from typing import Any, Dict
+from typing import Any, Dict, Type
 
+from django import forms
 from django.db import transaction
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views import generic
 
-from .forms import DivisionForm
 from .models import Division
 
 
@@ -50,33 +50,26 @@ class DivisionCreateView(generic.CreateView):
         return reverse("divisions:division-detail", kwargs={"code": self.object.code})
 
 
-def update(request: HttpRequest, code: str) -> HttpResponse:
-    """部署更新関数ビュー
+class DivisionUpdateView(generic.UpdateView):
+    """部署更新クラスビュー"""
 
-    Args:
-        code: 部署コード
-    """
+    model = Division
+    pk_url_kwarg = "code"
+    fields = ("code", "name")
 
-    # 部署コードから部署モデルインスタンスを取得
-    division = get_object_or_404(Division, pk=code)
-    if request.method == "POST":
-        # POSTパラメーターから部署フォームを構築
-        form = DivisionForm(request.POST, instance=division)
-        if form.is_valid():
-            division = form.save(commit=False)
-            division.code = code
-            with transaction.atomic():
-                division.save()
-            return redirect("divisions:division-detail", code=division.code)
-    else:  # request.method is "GET", maybe.
-        # 部署モデルインスタンスから部署フォームを構築
-        form = DivisionForm(instance=division)
-    form.fields["code"].widget.attrs["readonly"] = True
-    return render(
-        request,
-        "divisions/division_form.html",
-        {"title": "部署更新", "form": form, "action": "更新"},
-    )
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        ctx["title"] = "部署更新"
+        ctx["action"] = "更新"
+        return ctx
+
+    def get_form(self, form_class: Type[forms.Form] | None = None) -> forms.Form:
+        form = super().get_form(form_class=form_class)
+        form.fields["code"].widget.attrs["readonly"] = True
+        return form
+
+    def get_success_url(self) -> str:
+        return reverse("divisions:division-detail", kwargs={"code": self.object.code})
 
 
 def delete(request: HttpRequest, code: str) -> HttpResponse:
