@@ -20,6 +20,7 @@ platformdirs==3.4.0
 pycodestyle==2.10.0
 pyflakes==3.0.1
 pysen==0.10.4
+PyYAML==6.0
 smmap==5.0.0
 sqlparse==0.4.4
 tomli==2.0.1
