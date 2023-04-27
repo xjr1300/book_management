@@ -3,6 +3,7 @@ from typing import Any, Dict
 from django.db import transaction
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.views import generic
 
 from .forms import DivisionForm
@@ -32,25 +33,21 @@ class DivisionDetailView(generic.DetailView):
         return ctx
 
 
-def create(request: HttpResponse) -> HttpResponse:
-    """部署登録関数ビュー"""
+class DivisionCreateView(generic.CreateView):
+    """部署登録クラスビュー"""
 
-    if request.method == "POST":
-        # POSTパラメーターから部署フォームを構築
-        form = DivisionForm(request.POST)
-        if form.is_valid():
-            with transaction.atomic():
-                division = form.save()
-            return redirect("divisions:division-detail", code=division.code)
-    else:  # request.method is "GET", maybe.
-        # フォームを構築
-        form = DivisionForm()
-    # コンテキストを渡してテンプレートをレンダリング
-    return render(
-        request,
-        "divisions/division_form.html",
-        {"title": "部署登録", "form": form, "action": "登録"},
-    )
+    model = Division
+    pk_url_kwarg = "code"
+    fields = ("code", "name")
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        ctx["title"] = "部署登録"
+        ctx["action"] = "登録"
+        return ctx
+
+    def get_success_url(self) -> str:
+        return reverse("divisions:division-detail", kwargs={"code": self.object.code})
 
 
 def update(request: HttpRequest, code: str) -> HttpResponse:

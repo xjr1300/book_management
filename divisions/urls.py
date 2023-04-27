@@ -8,7 +8,7 @@ urlpatterns = [
     # 部署一覧ページ(ex: /divisions/)
     path("", views.DivisionListView.as_view(), name="division-list"),
     # 部署登録ページ (ex: /divisions/create/)
-    path("create/", views.create, name="division-create"),
+    path("create/", views.DivisionCreateView.as_view(), name="division-create"),
     # 部署詳細ページ (ex: /divisions/<code>/)
     path("<str:code>/", views.DivisionDetailView.as_view(), name="division-detail"),
     # 部署更新ページ (ex: /divisions/update/<code>/)
