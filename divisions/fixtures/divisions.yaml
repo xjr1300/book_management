@@ -1,0 +1,18 @@
+- model: divisions.division
+  pk: "58"
+  fields:
+    name: ICT開発室
+    created_at: 2023-04-19 00:00:00.000000+00:00
+    updated_at: 2023-04-19 00:00:00.000000+00:00
+- model: divisions.division
+  pk: "61"
+  fields:
+    name: 道路第3Ｇ
+    created_at: 2023-04-19 00:00:00.000000+00:00
+    updated_at: 2023-04-19 00:00:00.000000+00:00
+- model: divisions.division
+  pk: "80"
+  fields:
+    name: 東京本社営業部
+    created_at: 2023-04-19 00:00:00.000000+00:00
+    updated_at: 2023-04-19 00:00:00.000000+00:00
