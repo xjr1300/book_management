@@ -13,4 +13,6 @@ urlpatterns = [
     path("<str:code>/", views.detail, name="division-detail"),
     # 部署更新ページ (ex: /divisions/update/<code>/)
     path("update/<str:code>/", views.update, name="division-update"),
+    # 部署削除ページ (ex: /divisions/delete/<code>/)
+    path("delete/<str:code>/", views.delete, name="division-delete"),
 ]

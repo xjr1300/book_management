@@ -82,3 +82,20 @@ def update(request: HttpRequest, code: str) -> HttpResponse:
         "divisions/division_form.html",
         {"title": "部署更新", "form": form, "action": "更新"},
     )
+
+
+def delete(request: HttpRequest, code: str) -> HttpResponse:
+    """部署削除関数ビュー
+
+    Args:
+        code: 部署コード
+    """
+
+    # 部署コードから部署モデルインスタンスを取得
+    division = get_object_or_404(Division, pk=code)
+    if request.method == "POST":
+        division.delete()
+        return redirect("divisions:division-list")
+    return render(
+        request, "divisions/division_confirm_delete.html", {"division": division}
+    )

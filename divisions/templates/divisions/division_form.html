@@ -11,6 +11,7 @@
     <a href="{% url 'divisions:division-list' %}">部署一覧</a>
     {% if action == "更新" %}
       <a href="{% url 'divisions:division-detail' form.instance.code %}">部署詳細</a>
+      <a href="{% url 'divisions:division-delete' form.instance.code %}">部署削除</a>
     {% endif %}
   </div>
 {% endblock inner_body %}

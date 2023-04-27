@@ -1,6 +1,4 @@
-{% extends 'base.html' %}
-
-{% block inner_body %}
+{% extends 'base.html' %} {% block inner_body %}
   <h1>部署一覧</h1>
   {% if division_list %}
     <ul>
@@ -9,6 +7,7 @@
           {{ division.code }}: {{ division.name }}
           <a href="{% url 'divisions:division-detail' division.code %}">詳細</a>
           <a href="{% url 'divisions:division-update' division.code %}">更新</a>
+          <a href="{% url 'divisions:division-delete' division.code %}">削除</a>
         </li>
       {% endfor %}
     </ul>
