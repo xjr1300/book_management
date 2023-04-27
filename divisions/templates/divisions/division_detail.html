@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8"/>
-  <title>部署詳細</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block inner_body %}
   <h1>部署詳細</h1>
   <div>部署コード: {{ division.code }}</div>
   <div>部署名: {{ division.name }}</div>
-</body>
-</html>
+{% endblock inner_body %}
