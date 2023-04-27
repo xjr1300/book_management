@@ -1,23 +1,23 @@
+from typing import Any, Dict
+
 from django.db import transaction
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views import generic
 
 from .forms import DivisionForm
 from .models import Division
 
 
-def list(request: HttpRequest) -> HttpResponse:
-    """部署一覧関数ビュー"""
+class DivisionListView(generic.ListView):
+    """部署一覧クラスビュー"""
 
-    # すべての部署をデータベースから取得
-    divisions = Division.objects.all()
-    # コンテキストを作成
-    context = {
-        "title": "部署一覧",
-        "division_list": divisions,
-    }
-    # コンテキストでテンプレートをレンダリング
-    return render(request, "divisions/division_list.html", context)
+    model = Division
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        ctx["title"] = "部署一覧"
+        return ctx
 
 
 def detail(request: HttpResponse, code: str) -> HttpResponse:

@@ -6,7 +6,7 @@ app_name = "divisions"
 
 urlpatterns = [
     # 部署一覧ページ(ex: /divisions/)
-    path("", views.list, name="division-list"),
+    path("", views.DivisionListView.as_view(), name="division-list"),
     # 部署登録ページ (ex: /divisions/create/)
     path("create/", views.create, name="division-create"),
     # 部署詳細ページ (ex: /divisions/<code>/)
