@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block inner_body %}
+  <h1>部署{{ action }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{{ action }}</button>
+  </form>
+  <div><a href="{% url 'divisions:division-list' %}">部署一覧</a></div>
+{% endblock inner_body %}

@@ -14,4 +14,5 @@
   {% else %}
     <p>部署が存在しません。</p>
   {% endif %}
+  <a href="{% url 'divisions:division-create' %}">部署登録</a>
 {% endblock inner_body %}
