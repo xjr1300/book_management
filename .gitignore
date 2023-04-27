@@ -4,3 +4,4 @@ venv/
 *.py[cod]
 db.sqlite3
 .mypy_cache
+.idea/
