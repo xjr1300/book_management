@@ -36,6 +36,17 @@ class PageTitleMixin(generic.base.ContextMixin):
         return ctx
 
 
+class FormActionMixin(generic.base.ContextMixin):
+    """フォームアクションミックスイン"""
+
+    action = None
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        ctx["action"] = self.action
+        return ctx
+
+
 class DivisionListView(DivisionViewMixin, PageTitleMixin, generic.ListView):
     """部署一覧クラスビュー"""
 
@@ -55,16 +66,13 @@ class DivisionCreateView(
     DivisionSingleObjectMixin,
     DivisionFormMixin,
     PageTitleMixin,
+    FormActionMixin,
     generic.CreateView,
 ):
     """部署登録クラスビュー"""
 
     title = "部署登録"
-
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        ctx = super().get_context_data(**kwargs)
-        ctx["action"] = "登録"
-        return ctx
+    action = "登録"
 
     def get_success_url(self) -> str:
         return reverse("divisions:division-detail", kwargs={"code": self.object.code})
@@ -75,16 +83,13 @@ class DivisionUpdateView(
     DivisionSingleObjectMixin,
     DivisionFormMixin,
     PageTitleMixin,
+    FormActionMixin,
     generic.UpdateView,
 ):
     """部署更新クラスビュー"""
 
     title = "部署更新"
-
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        ctx = super().get_context_data(**kwargs)
-        ctx["action"] = "更新"
-        return ctx
+    action = "更新"
 
     def get_form(self, form_class: Type[forms.Form] | None = None) -> forms.Form:
         form = super().get_form(form_class=form_class)
