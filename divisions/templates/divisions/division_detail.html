@@ -4,4 +4,7 @@
   <h1>部署詳細</h1>
   <div>部署コード: {{ division.code }}</div>
   <div>部署名: {{ division.name }}</div>
+  <div>
+    <a href="{% url 'divisions:division-list' %}">部署一覧</a>
+  </div>
 {% endblock inner_body %}

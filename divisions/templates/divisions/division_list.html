@@ -5,7 +5,10 @@
   {% if division_list %}
     <ul>
       {% for division in division_list %}
-        <li>{{ division.code }}: {{ division.name }}</li>
+        <li>
+          {{ division.code }}: {{ division.name }}
+          <a href="{% url 'divisions:division-detail' division.code %}">詳細</a>
+        </li>
       {% endfor %}
     </ul>
   {% else %}
