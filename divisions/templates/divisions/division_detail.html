@@ -6,5 +6,6 @@
   <div>部署名: {{ division.name }}</div>
   <div>
     <a href="{% url 'divisions:division-list' %}">部署一覧</a>
+    <a href="{% url 'divisions:division-update' division.code %}">部署更新</a>
   </div>
 {% endblock inner_body %}

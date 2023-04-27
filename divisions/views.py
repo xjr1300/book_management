@@ -37,7 +37,7 @@ def detail(request: HttpResponse, code: str) -> HttpResponse:
 
 
 def create(request: HttpResponse) -> HttpResponse:
-    """部署登録ビュー"""
+    """部署登録関数ビュー"""
 
     if request.method == "POST":
         # POSTパラメーターから部署フォームを構築
@@ -53,4 +53,32 @@ def create(request: HttpResponse) -> HttpResponse:
         request,
         "divisions/division_form.html",
         {"title": "部署登録", "form": form, "action": "登録"},
+    )
+
+
+def update(request: HttpRequest, code: str) -> HttpResponse:
+    """部署更新関数ビュー
+
+    Args:
+        code: 部署コード
+    """
+
+    # 部署コードから部署モデルインスタンスを取得
+    division = get_object_or_404(Division, pk=code)
+    if request.method == "POST":
+        # POSTパラメーターから部署フォームを構築
+        form = DivisionForm(request.POST, instance=division)
+        if form.is_valid():
+            division = form.save(commit=False)
+            division.code = code
+            division.save()
+            return redirect("divisions:division-detail", code=division.code)
+    else:  # request.method is "GET", maybe.
+        # 部署モデルインスタンスから部署フォームを構築
+        form = DivisionForm(instance=division)
+    form.fields["code"].widget.attrs["readonly"] = True
+    return render(
+        request,
+        "divisions/division_form.html",
+        {"title": "部署更新", "form": form, "action": "更新"},
     )

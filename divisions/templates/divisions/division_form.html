@@ -7,5 +7,10 @@
     {{ form.as_p }}
     <button type="submit">{{ action }}</button>
   </form>
-  <div><a href="{% url 'divisions:division-list' %}">部署一覧</a></div>
+  <div>
+    <a href="{% url 'divisions:division-list' %}">部署一覧</a>
+    {% if action == "更新" %}
+      <a href="{% url 'divisions:division-detail' form.instance.code %}">部署詳細</a>
+    {% endif %}
+  </div>
 {% endblock inner_body %}

@@ -8,6 +8,7 @@
         <li>
           {{ division.code }}: {{ division.name }}
           <a href="{% url 'divisions:division-detail' division.code %}">詳細</a>
+          <a href="{% url 'divisions:division-update' division.code %}">更新</a>
         </li>
       {% endfor %}
     </ul>
