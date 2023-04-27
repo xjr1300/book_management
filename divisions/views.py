@@ -19,6 +19,12 @@ class DivisionSingleObjectMixin:
     pk_url_kwarg = "code"
 
 
+class DivisionFormMixin:
+    """部署フォームドミックスイン"""
+
+    fields = ("code", "name")
+
+
 class DivisionListView(DivisionViewMixin, generic.ListView):
     """部署一覧クラスビュー"""
 
@@ -40,11 +46,9 @@ class DivisionDetailView(
 
 
 class DivisionCreateView(
-    DivisionViewMixin, DivisionSingleObjectMixin, generic.CreateView
+    DivisionViewMixin, DivisionSingleObjectMixin, DivisionFormMixin, generic.CreateView
 ):
     """部署登録クラスビュー"""
-
-    fields = ("code", "name")
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         ctx = super().get_context_data(**kwargs)
@@ -57,11 +61,9 @@ class DivisionCreateView(
 
 
 class DivisionUpdateView(
-    DivisionViewMixin, DivisionSingleObjectMixin, generic.UpdateView
+    DivisionViewMixin, DivisionSingleObjectMixin, DivisionFormMixin, generic.UpdateView
 ):
     """部署更新クラスビュー"""
-
-    fields = ("code", "name")
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         ctx = super().get_context_data(**kwargs)
