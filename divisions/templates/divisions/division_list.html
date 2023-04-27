@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"/>
+  <title>部署一覧</title>
+</head>
+<body>
+<h1>部署一覧</h1>
+{% if division_list %}
+  <ul>
+    {% for division in division_list %}
+      <li>{{ division.code }}: {{ division.name }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>部署が存在しません。</p>
+{% endif %}
+</body>
+</html>

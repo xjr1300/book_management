@@ -5,5 +5,6 @@ from . import views
 app_name = "divisions"
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    # 部署一覧ページ(ex: /divisions/)
+    path("", views.list, name="division-list"),
 ]
