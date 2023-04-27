@@ -13,6 +13,12 @@ class DivisionViewMixin:
     model = Division
 
 
+class DivisionSingleObjectMixin:
+    """部署シングルオブジェクトミックスイン"""
+
+    pk_url_kwarg = "code"
+
+
 class DivisionListView(DivisionViewMixin, generic.ListView):
     """部署一覧クラスビュー"""
 
@@ -22,10 +28,10 @@ class DivisionListView(DivisionViewMixin, generic.ListView):
         return ctx
 
 
-class DivisionDetailView(DivisionViewMixin, generic.DetailView):
+class DivisionDetailView(
+    DivisionViewMixin, DivisionSingleObjectMixin, generic.DetailView
+):
     """部署詳細クラスビュー"""
-
-    pk_url_kwarg = "code"
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         ctx = super().get_context_data(**kwargs)
@@ -33,10 +39,11 @@ class DivisionDetailView(DivisionViewMixin, generic.DetailView):
         return ctx
 
 
-class DivisionCreateView(DivisionViewMixin, generic.CreateView):
+class DivisionCreateView(
+    DivisionViewMixin, DivisionSingleObjectMixin, generic.CreateView
+):
     """部署登録クラスビュー"""
 
-    pk_url_kwarg = "code"
     fields = ("code", "name")
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
@@ -49,10 +56,11 @@ class DivisionCreateView(DivisionViewMixin, generic.CreateView):
         return reverse("divisions:division-detail", kwargs={"code": self.object.code})
 
 
-class DivisionUpdateView(DivisionViewMixin, generic.UpdateView):
+class DivisionUpdateView(
+    DivisionViewMixin, DivisionSingleObjectMixin, generic.UpdateView
+):
     """部署更新クラスビュー"""
 
-    pk_url_kwarg = "code"
     fields = ("code", "name")
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
@@ -70,10 +78,11 @@ class DivisionUpdateView(DivisionViewMixin, generic.UpdateView):
         return reverse("divisions:division-detail", kwargs={"code": self.object.code})
 
 
-class DivisionDeleteView(DivisionViewMixin, generic.DeleteView):
+class DivisionDeleteView(
+    DivisionViewMixin, DivisionSingleObjectMixin, generic.DeleteView
+):
     """部署削除クラスビュー"""
 
-    pk_url_kwarg = "code"
     success_url = reverse_lazy("divisions:division-list")
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
