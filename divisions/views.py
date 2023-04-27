@@ -1,10 +1,7 @@
 from typing import Any, Dict, Type
 
 from django import forms
-from django.db import transaction
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 
 from .models import Division
@@ -72,19 +69,14 @@ class DivisionUpdateView(generic.UpdateView):
         return reverse("divisions:division-detail", kwargs={"code": self.object.code})
 
 
-def delete(request: HttpRequest, code: str) -> HttpResponse:
-    """部署削除関数ビュー
+class DivisionDeleteView(generic.DeleteView):
+    """部署削除クラスビュー"""
 
-    Args:
-        code: 部署コード
-    """
+    model = Division
+    pk_url_kwarg = "code"
+    success_url = reverse_lazy("divisions:division-list")
 
-    # 部署コードから部署モデルインスタンスを取得
-    division = get_object_or_404(Division, pk=code)
-    if request.method == "POST":
-        with transaction.atomic():
-            division.delete()
-        return redirect("divisions:division-list")
-    return render(
-        request, "divisions/division_confirm_delete.html", {"division": division}
-    )
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        ctx["title"] = "部署削除"
+        return ctx

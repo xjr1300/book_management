@@ -16,5 +16,7 @@ urlpatterns = [
         "update/<str:code>/", views.DivisionUpdateView.as_view(), name="division-update"
     ),
     # 部署削除ページ (ex: /divisions/delete/<code>/)
-    path("delete/<str:code>/", views.delete, name="division-delete"),
+    path(
+        "delete/<str:code>/", views.DivisionDeleteView.as_view(), name="division-delete"
+    ),
 ]
