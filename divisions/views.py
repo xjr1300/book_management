@@ -20,21 +20,16 @@ class DivisionListView(generic.ListView):
         return ctx
 
 
-def detail(request: HttpResponse, code: str) -> HttpResponse:
-    """部署詳細関数ビュー
+class DivisionDetailView(generic.DetailView):
+    """部署詳細クラスビュー"""
 
-    Args:
-        code: 部署コード
-    """
+    model = Division
+    pk_url_kwarg = "code"
 
-    # 部署コードから部署モデルインスタンスを取得
-    division = get_object_or_404(Division, pk=code)
-    # コンテキストを渡してテンプレートをレンダリング
-    return render(
-        request,
-        "divisions/division_detail.html",
-        {"title": "部署詳細", "division": division},
-    )
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        ctx["title"] = "部署詳細"
+        return ctx
 
 
 def create(request: HttpResponse) -> HttpResponse:
