@@ -1,8 +1,10 @@
-from typing import Any, Dict, Type
+from typing import Type
 
 from django import forms
 from django.urls import reverse, reverse_lazy
 from django.views import generic
+
+from core.mixins import FormActionMixin, PageTitleMixin
 
 from .models import Division
 
@@ -23,28 +25,6 @@ class DivisionFormMixin:
     """部署フォームドミックスイン"""
 
     fields = ("code", "name")
-
-
-class PageTitleMixin(generic.base.ContextMixin):
-    """ページタイトルミックスイン"""
-
-    title = None
-
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        ctx = super().get_context_data(**kwargs)
-        ctx["title"] = self.title
-        return ctx
-
-
-class FormActionMixin(generic.base.ContextMixin):
-    """フォームアクションミックスイン"""
-
-    action = None
-
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        ctx = super().get_context_data(**kwargs)
-        ctx["action"] = self.action
-        return ctx
 
 
 class DivisionListView(DivisionViewMixin, PageTitleMixin, generic.ListView):
