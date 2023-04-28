@@ -2,22 +2,7 @@
 
 {% block inner_body %}
   <h1>書籍分類詳細一覧</h1>
-  <div>
-    {% for classification in classification_list %}
-      {% if classification.code != current_classification.code %}
-        <a href="{% url 'books:classification-detail-list' %}?classification_code={{ classification.code }}">
-          {{ classification.name }}
-        </a>&thinsp;
-      {% else %}
-        {{ classification.name }}&thinsp;
-      {% endif %}
-    {% endfor %}
-    {% if current_classification %}
-      <a href="{% url 'books:classification-detail-list' %}">すべて</a>
-    {% else %}
-      すべて
-    {% endif %}
-  </div>
+  {% include 'books/_classification_links.html' %}
   {% if classification_detail_list %}
     <ul>
       {% for classification_detail in classification_detail_list %}

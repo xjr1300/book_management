@@ -65,4 +65,6 @@ urlpatterns = [
         views.ClassificationDetailDeleteView.as_view(),
         name="classification-detail-delete",
     ),
+    # 書籍一覧ページ (ex: /books/)
+    path("", views.BookListView.as_view(), name="book-list"),
 ]

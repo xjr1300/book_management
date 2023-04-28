@@ -1,0 +1,16 @@
+<div>
+  {% for classification in classification_list %}
+    {% if classification.code != current_classification.code %}
+      <a href="{{ list_page_url }}?classification_code={{ classification.code }}">
+        {{ classification.name }}
+      </a>&thinsp;
+    {% else %}
+      {{ classification.name }}&thinsp;
+    {% endif %}
+  {% endfor %}
+  {% if current_classification %}
+    <a href="{{ list_page_url }}">すべて</a>
+  {% else %}
+    すべて
+  {% endif %}
+</div>
