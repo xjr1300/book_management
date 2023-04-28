@@ -8,7 +8,7 @@ from django.views import generic
 
 from core.mixins import FormActionMixin, PageTitleMixin
 
-from .models import Classification, ClassificationDetail
+from .models import Book, Classification, ClassificationDetail
 
 
 class ClassificationViewMixin:
@@ -180,6 +180,8 @@ class ClassificationDetailListView(
         ctx["classification_list"] = Classification.objects.all()
         # コンテキストに書籍分類詳細をフィルタする書籍分類モデルインスタンスを登録
         ctx["current_classification"] = self.classification
+        # コンテキストに書籍分類詳細一覧ページのURLを登録
+        ctx["list_page_url"] = reverse("books:classification-detail-list")
         return ctx
 
 
@@ -249,3 +251,35 @@ class ClassificationDetailDeleteView(
     title = "書籍分類詳細削除"
     template_name = "books/classification_detail_confirm_delete.html"
     success_url = reverse_lazy("books:classification-detail-list")
+
+
+class BookViewMixin:
+    """書籍ビューミックスイン"""
+
+    model = Book
+
+
+class BookListView(BookViewMixin, PageTitleMixin, generic.ListView):
+    """書籍一覧クラスビュー"""
+
+    title = "書籍一覧"
+    classification: Optional[Classification] = None
+
+    def get_queryset(self) -> QuerySet[Book]:
+        """書籍一覧ページで表示する書籍QuerySetを返却する。"""
+        self.classification = get_classification_from_param(self.request)
+        if not self.classification:
+            return Book.objects.all()
+        else:
+            return Book.objects.filter(
+                classification_detail__classification=self.classification
+            )
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        """コンテキストを取得して、そのコンテキストにすべての書籍分類モデルインスタンスを登録する。"""
+        ctx = super().get_context_data(**kwargs)
+        ctx["classification_list"] = Classification.objects.all()
+        ctx["current_classification"] = self.classification
+        # コンテキストに書籍一覧ページのURLを登録
+        ctx["list_page_url"] = reverse("books:book-list")
+        return ctx

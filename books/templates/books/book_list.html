@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block inner_body %}
+  <h1>書籍一覧</h1>
+  {% include 'books/_classification_links.html' %}
+  {% if book_list %}
+    <table>
+      <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>分類</th>
+        <th>分類詳細</th>
+        <th>著者または訳者など</th>
+        <th>出版社</th>
+        <th>管理部署</th>
+        <th>廃棄</th>
+        <th/>
+      </tr>
+      </thead>
+      <tbody>
+      {% for book in book_list %}
+        <tr>
+          <td>{{ book.title }}</td>
+          <td>{{ book.classification_detail.classification }}</td>
+          <td>{{ book.classification_detail }}</td>
+          <td>{% if book.authors %}{{ book.authors | truncatechars:40 }}{% else %}ー{% endif %}</td>
+          <td>{{ book.publisher | default_if_none:"ー" }}</td>
+          <td>{{ book.division }}</td>
+          <td>{{ book.disposed | yesno:"済,ー" }}</td>
+          <td/>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>書籍が存在しません。</p>
+  {% endif %}
+{% endblock inner_body %}
