@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block inner_body %}
+  <h1>書籍分類詳細</h1>
+  <div>書籍分類コード: {{ classification.code }}</div>
+  <div>書籍分類名: {{ classification.name }}</div>
+  <div>
+    <a href="{% url 'books:classification-list' %}">書籍分類一覧</a>
+    <a href="{% url 'books:classification-update' classification.code %}">書籍分類更新</a>
+    <a href="{% url 'books:classification-delete' classification.code %}">書籍分類削除</a>
+  </div>
+{% endblock inner_body %}

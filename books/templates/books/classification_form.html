@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block inner_body %}
+  <h1>書籍分類{{ action }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{{ action }}</button>
+  </form>
+  <div>
+    <a href="{% url 'books:classification-list' %}">書籍分類一覧</a>
+    {% if action == "更新" %}
+      <a href="{% url 'books:classification-detail' form.instance.code %}">書籍分類詳細</a>
+      <a href="{% url 'books:classification-delete' form.instance.code %}">書籍分類削除</a>
+    {% endif %}
+  </div>
+{% endblock inner_body %}
