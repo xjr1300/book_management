@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block inner_body %}
+  <h1>書籍分類削除</h1>
+  <div>書籍分類コード: {{ classification.code }}</div>
+  <div>書籍分類名: {{ classification.name }}</div>
+  <div>
+  <p>上記の書籍分類を削除しますか?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">削除</button>
+  </form>
+  <div>
+    <a href="{% url 'books:classification-list' %}">書籍分類一覧</a>
+    <a href="{% url 'books:classification-detail' classification.code %}">書籍分類詳細</a>
+    <a href="{% url 'books:classification-update' classification.code %}">書籍分類更新</a>
+  </div>
+{% endblock inner_body %}
+</div>

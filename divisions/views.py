@@ -1,4 +1,4 @@
-from typing import Type
+from typing import Optional
 
 from django import forms
 from django.urls import reverse, reverse_lazy
@@ -71,7 +71,7 @@ class DivisionUpdateView(
     title = "部署更新"
     action = "更新"
 
-    def get_form(self, form_class: Type[forms.Form] | None = None) -> forms.Form:
+    def get_form(self, form_class: Optional[forms.Form] = None) -> forms.Form:
         form = super().get_form(form_class=form_class)
         form.fields["code"].widget.attrs["readonly"] = True
         return form
