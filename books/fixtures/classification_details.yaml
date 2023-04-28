@@ -1,0 +1,700 @@
+- model: books.classificationdetail
+  pk: "000"
+  fields:
+    classification: "000"
+    name: 総記
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "010"
+  fields:
+    classification: "000"
+    name: 図書館、図書館情報学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "020"
+  fields:
+    classification: "000"
+    name: 図書、書誌学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "030"
+  fields:
+    classification: "000"
+    name: 百科事典、用語索引
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "040"
+  fields:
+    classification: "000"
+    name: 一般論文集、一般講演集、雑著
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "050"
+  fields:
+    classification: "000"
+    name: 逐次刊行物、一般年鑑
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "060"
+  fields:
+    classification: "000"
+    name: 団体、博物館
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "070"
+  fields:
+    classification: "000"
+    name: ジャーナリズム、新聞
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "080"
+  fields:
+    classification: "000"
+    name: 書、全集、選集
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "090"
+  fields:
+    classification: "000"
+    name: 貴重書、郷土資料、その他の特別コレクション
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "100"
+  fields:
+    classification: "100"
+    name: 哲学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "110"
+  fields:
+    classification: "100"
+    name: 哲学各論
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "120"
+  fields:
+    classification: "100"
+    name: 東洋思想
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "130"
+  fields:
+    classification: "100"
+    name: 西洋哲学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "140"
+  fields:
+    classification: "100"
+    name: 心理学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "150"
+  fields:
+    classification: "100"
+    name: 倫理学、道徳
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "160"
+  fields:
+    classification: "100"
+    name: 宗教
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "170"
+  fields:
+    classification: "100"
+    name: 神道
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "180"
+  fields:
+    classification: "100"
+    name: 仏教
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "190"
+  fields:
+    classification: "100"
+    name: キリスト教、ユダヤ教
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "200"
+  fields:
+    classification: "200"
+    name: 歴史、世界史、文化史
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "210"
+  fields:
+    classification: "200"
+    name: 日本史
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "220"
+  fields:
+    classification: "200"
+    name: アジア史、東洋史
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "230"
+  fields:
+    classification: "200"
+    name: ヨーロッパ史、西洋史
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "240"
+  fields:
+    classification: "200"
+    name: アフリカ史
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "250"
+  fields:
+    classification: "200"
+    name: 北アメリカ史
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "260"
+  fields:
+    classification: "200"
+    name: 南アメリカ史
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "270"
+  fields:
+    classification: "200"
+    name: オセアニア史、両極地方史
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "280"
+  fields:
+    classification: "200"
+    name: 伝記
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "290"
+  fields:
+    classification: "200"
+    name: 地理、地誌、紀行
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "300"
+  fields:
+    classification: "300"
+    name: 社会科学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "310"
+  fields:
+    classification: "300"
+    name: 政治
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "320"
+  fields:
+    classification: "300"
+    name: 法律
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "330"
+  fields:
+    classification: "300"
+    name: 経済
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "340"
+  fields:
+    classification: "300"
+    name: 財政
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "350"
+  fields:
+    classification: "300"
+    name: 統計
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "360"
+  fields:
+    classification: "300"
+    name: 社会
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "370"
+  fields:
+    classification: "300"
+    name: 教育
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "380"
+  fields:
+    classification: "300"
+    name: 風俗習慣、民俗学、民族学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "390"
+  fields:
+    classification: "300"
+    name: 国防、軍事
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "400"
+  fields:
+    classification: "400"
+    name: 自然科学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "410"
+  fields:
+    classification: "400"
+    name: 数学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "420"
+  fields:
+    classification: "400"
+    name: 物理学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "430"
+  fields:
+    classification: "400"
+    name: 化学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "440"
+  fields:
+    classification: "400"
+    name: 天文学、宇宙科学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "450"
+  fields:
+    classification: "400"
+    name: 地球科学、地学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "460"
+  fields:
+    classification: "400"
+    name: 生物科学、一般生物学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "470"
+  fields:
+    classification: "400"
+    name: 植物学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "480"
+  fields:
+    classification: "400"
+    name: 動物学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "490"
+  fields:
+    classification: "400"
+    name: 医学、薬学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "500"
+  fields:
+    classification: "500"
+    name: 技術、工学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "510"
+  fields:
+    classification: "500"
+    name: 建設工学、土木工学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "520"
+  fields:
+    classification: "500"
+    name: 建築学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "530"
+  fields:
+    classification: "500"
+    name: 機械工学、原子力工学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "540"
+  fields:
+    classification: "500"
+    name: 電気工学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "550"
+  fields:
+    classification: "500"
+    name: 海洋工学、船舶工学、兵器、軍事工学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "560"
+  fields:
+    classification: "500"
+    name: 金属工学、鉱山工学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "570"
+  fields:
+    classification: "500"
+    name: 化学工業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "580"
+  fields:
+    classification: "500"
+    name: 製造工業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "590"
+  fields:
+    classification: "500"
+    name: 家政学、生活科学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "600"
+  fields:
+    classification: "600"
+    name: 産業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "610"
+  fields:
+    classification: "600"
+    name: 農業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "620"
+  fields:
+    classification: "600"
+    name: 園芸、造園
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "630"
+  fields:
+    classification: "600"
+    name: 蚕糸業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "640"
+  fields:
+    classification: "600"
+    name: 畜産業、獣医学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "650"
+  fields:
+    classification: "600"
+    name: 林業、狩猟
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "660"
+  fields:
+    classification: "600"
+    name: 水産業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "670"
+  fields:
+    classification: "600"
+    name: 商業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "680"
+  fields:
+    classification: "600"
+    name: 運輸、交通、観光事業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "690"
+  fields:
+    classification: "600"
+    name: 通信事業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "700"
+  fields:
+    classification: "700"
+    name: 芸術、美術
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "710"
+  fields:
+    classification: "700"
+    name: 彫刻、オブジェ
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "720"
+  fields:
+    classification: "700"
+    name: 絵画、書、書道
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "730"
+  fields:
+    classification: "700"
+    name: 版画、印章、篆刻、印譜
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "740"
+  fields:
+    classification: "700"
+    name: 写真、印刷
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "750"
+  fields:
+    classification: "700"
+    name: 工芸
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "760"
+  fields:
+    classification: "700"
+    name: 音楽、舞踊、バレエ
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "770"
+  fields:
+    classification: "700"
+    name: 演劇、映画、大衆芸能
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "780"
+  fields:
+    classification: "700"
+    name: スポーツ、体育
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "790"
+  fields:
+    classification: "700"
+    name: 諸芸、娯楽
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "800"
+  fields:
+    classification: "800"
+    name: 言語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "810"
+  fields:
+    classification: "800"
+    name: 日本語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "820"
+  fields:
+    classification: "800"
+    name: 中国語、その他の東洋の諸言語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "830"
+  fields:
+    classification: "800"
+    name: 英語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "840"
+  fields:
+    classification: "800"
+    name: ドイツ語、その他のゲルマン諸語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "850"
+  fields:
+    classification: "800"
+    name: フランス語、プロバンス語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "860"
+  fields:
+    classification: "800"
+    name: スペイン語、ボルトガル語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "870"
+  fields:
+    classification: "800"
+    name: イタリア語、その他のロマンス諸語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "880"
+  fields:
+    classification: "800"
+    name: ロシア語、その他のスラブ諸語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "890"
+  fields:
+    classification: "800"
+    name: その他の諸言語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "900"
+  fields:
+    classification: "900"
+    name: 文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "910"
+  fields:
+    classification: "900"
+    name: 日本文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "920"
+  fields:
+    classification: "900"
+    name: 中国文学、その他の東洋文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "930"
+  fields:
+    classification: "900"
+    name: 英米文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "940"
+  fields:
+    classification: "900"
+    name: ドイツ文学、その他のゲルマン文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "950"
+  fields:
+    classification: "900"
+    name: フランス文学、プロバンス文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "960"
+  fields:
+    classification: "900"
+    name: スペイン文学、ポルトガル文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "970"
+  fields:
+    classification: "900"
+    name: イタリア文学、その他のロマンス文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "980"
+  fields:
+    classification: "900"
+    name: ロシア・ソビエト文学、その他のスラブ文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classificationdetail
+  pk: "990"
+  fields:
+    classification: "900"
+    name: その他の諸言語文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
