@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block inner_body %}
+  <h1>書籍分類詳細一覧</h1>
+  {% if classification_detail_list %}
+    <ul>
+      {% for classification_detail in classification_detail_list %}
+        <li>
+          {{ classification_detail.code }}: {{ classification_detail.classification }} &gt; {{ classification_detail.name }}
+          <a href="{% url 'books:classification-detail-detail' classification_detail.code %}">詳細</a>
+          <a href="{% url 'books:classification-detail-update' classification_detail.code %}">更新</a>
+          <a href="{% url 'books:classification-detail-delete' classification_detail.code %}">削除</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>書籍分類詳細が存在しません。</p>
+  {% endif %}
+  <a href="{% url 'books:classification-detail-create' %}">書籍分類詳細登録</a>
+{% endblock inner_body %}

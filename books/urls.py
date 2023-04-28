@@ -35,4 +35,34 @@ urlpatterns = [
         views.ClassificationDeleteView.as_view(),
         name="classification-delete",
     ),
+    # 書籍分類詳細一覧ページ(ex: /classification-details/)
+    path(
+        "classification-details/",
+        views.ClassificationDetailListView.as_view(),
+        name="classification-detail-list",
+    ),
+    # 書籍分類詳細登録ページ (ex: /classification-details/create/)
+    path(
+        "classification-details/create/",
+        views.ClassificationDetailCreateView.as_view(),
+        name="classification-detail-create",
+    ),
+    # 書籍分類詳細詳細ページ (ex: /classification-details/<code>/)
+    path(
+        "classification-details/<str:code>/",
+        views.ClassificationDetailDetailView.as_view(),
+        name="classification-detail-detail",
+    ),
+    # 書籍分類詳細更新ページ (ex: /classification-details/update/<code>/)
+    path(
+        "classification-details/update/<str:code>/",
+        views.ClassificationDetailUpdateView.as_view(),
+        name="classification-detail-update",
+    ),
+    # 書籍分類詳細削除ページ (ex: /classification-details/delete/<code>/)
+    path(
+        "classification-details/delete/<str:code>/",
+        views.ClassificationDetailDeleteView.as_view(),
+        name="classification-detail-delete",
+    ),
 ]
