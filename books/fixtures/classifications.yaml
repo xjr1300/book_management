@@ -1,0 +1,60 @@
+- model: books.classification
+  pk: "000"
+  fields:
+    name: 総記
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classification
+  pk: "100"
+  fields:
+    name: 哲学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classification
+  pk: "200"
+  fields:
+    name: 歴史
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classification
+  pk: "300"
+  fields:
+    name: 社会科学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classification
+  pk: "400"
+  fields:
+    name: 自然科学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classification
+  pk: "500"
+  fields:
+    name: 技術
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classification
+  pk: "600"
+  fields:
+    name: 産業
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classification
+  pk: "700"
+  fields:
+    name: 芸術
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classification
+  pk: "800"
+  fields:
+    name: 言語
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
+- model: books.classification
+  pk: "900"
+  fields:
+    name: 文学
+    created_at: 2023-04-24 00:00:00.000000+00:00
+    updated_at: 2023-04-24 00:00:00.000000+00:00
