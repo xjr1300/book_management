@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "divisions.apps.DivisionsConfig",
+    "books.apps.BooksConfig",
 ]
 
 MIDDLEWARE = [
