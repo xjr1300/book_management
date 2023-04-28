@@ -1,8 +1,10 @@
 # django.db.modelsモジュールをインポート
 from django.db import models
 
+from core.models import TimestampModel
 
-class Division(models.Model):
+
+class Division(TimestampModel):
     """部署モデル
 
     django.db.models.Modelを継承したDivisionモデルを定義します。
@@ -12,10 +14,6 @@ class Division(models.Model):
     code = models.CharField("部署コード", primary_key=True, max_length=2)
     # 部署名
     name = models.CharField("部署名", max_length=80)
-    # 作成日時
-    created_at = models.DateTimeField("作成日時", auto_now_add=True)
-    # 更新日時
-    updated_at = models.DateTimeField("更新日時", auto_now=True)
 
     class Meta:
         db_table = "divisions"
