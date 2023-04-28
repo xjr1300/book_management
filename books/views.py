@@ -1,6 +1,8 @@
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from django import forms
+from django.db.models import QuerySet
+from django.http import HttpRequest
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 
@@ -95,6 +97,31 @@ class ClassificationDeleteView(
     success_url = reverse_lazy("books:classification-list")
 
 
+def get_classification_from_param(request: HttpRequest) -> Optional[Classification]:
+    """GETパラメータで指定された書籍分類コードから書籍分類モデルインスタンスを取得して返却する。
+
+    Args:
+        request: HTTPリクエスト
+
+    Returns
+        書籍分類モデルインスタンス。
+        GETパラメーターに書籍分類コードが指定されていない場合、またそのパラメータで指定された書籍分類コードと
+        一致する書籍分類が存在しない場合はNone。
+    """
+    # 書籍分類コードを取得
+    code = request.GET.get("classification_code", None)
+    # 書籍分類コードが指定されていない場合はNoneを返却
+    if not code:
+        return None
+
+    try:
+        # 書籍分類コードから書籍分類モデルインスタンスを取得
+        return Classification.objects.get(code=code)
+    except Classification.DoesNotExist:
+        # 書籍分類コードから書籍分類モデルインスタンスを取得できない場合はNoneを返却
+        return None
+
+
 class ClassificationDetailViewMixin:
     """書籍分類詳細ビューミックスイン"""
 
@@ -128,6 +155,32 @@ class ClassificationDetailListView(
     title = "書籍分類詳細一覧"
     context_object_name = "classification_detail_list"
     template_name = "books/classification_detail_list.html"
+    # 書籍分類詳細をフィルタする書籍分類
+    classification: Optional[Classification] = None
+
+    def get_queryset(self) -> QuerySet[ClassificationDetail]:
+        """書籍分類詳細一覧ページで表示する書籍分類詳細QuerySetを返却する。"""
+        self.classification = get_classification_from_param(self.request)
+        if not self.classification:
+            return ClassificationDetail.objects.all()
+        else:
+            return ClassificationDetail.objects.filter(
+                classification=self.classification
+            )
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        """コンテキストを返却する。
+
+        コンテキストを取得して、コンテキストにすべての書籍分類詳細モデルインスタンスと、
+        書籍分類詳細をフィルタする書籍分類モデルインスタンスを登録する。
+        """
+        # コンテキストを取得
+        ctx = super().get_context_data(**kwargs)
+        # コンテキストにすべての書籍分類詳細モデルインスタンスを登録
+        ctx["classification_list"] = Classification.objects.all()
+        # コンテキストに書籍分類詳細をフィルタする書籍分類モデルインスタンスを登録
+        ctx["current_classification"] = self.classification
+        return ctx
 
 
 class ClassificationDetailDetailView(
