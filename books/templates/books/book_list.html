@@ -37,4 +37,7 @@
   {% else %}
     <p>書籍が存在しません。</p>
   {% endif %}
+  <div>
+    <a href="{% url 'books:book-create' %}">書籍登録</a>
+  </div>
 {% endblock inner_body %}

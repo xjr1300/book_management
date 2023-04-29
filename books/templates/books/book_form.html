@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block inner_body %}
+  <h1>書籍{{ action }}</h1>
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">{{ action }}</button>
+  </form>
+  <div>
+    <a href="{% url 'books:book-list' %}">書籍一覧</a>
+  </div>
+  <script>
+    //
+    // 書籍分類詳細の選択肢を選択された書籍分類でフィルタする処理をJavaScriptで実装
+    //
+    // すべての書籍分類詳細のJSON表現
+    // safeテンプレートフィルタで、DjangoがJSON表現をレンダリングするときにXSS攻撃などを防ぐための無害化処理（サニタイズ）を無効化
+    const classificationDetails = {{ classification_details | safe }};
+
+    // 書籍分類詳細の選択肢を設定する関数
+    const setClassificationDetailOptions = () => {
+      // 書籍分類フォームフィールド（select要素）で選択された書籍分類の書籍分類コードを取得
+      // getElementById関数は、引数で指定されたid属性を持つHTML要素を検索
+      // 次のコードは、取得した書籍分類フォームフィールドで選択された書籍分類の書籍分類コードを取得
+      // <field>.auto_idは、Djangoがフォームフィールドに設定するid属性の値
+      const code = document.getElementById("{{ form.classification.auto_id }}").value;
+      // すべての書籍分類詳細から上記で取得した書籍分類コードを持つ書籍分類詳細を抽出
+      const filteredDetails = classificationDetails.filter(cd => cd.classification === code);
+      // 書籍分類詳細フォームフィールドを取得
+      const select = document.getElementById("{{ form.classification_detail.auto_id }}");
+      // 書籍分類詳細フォームフィールドの子要素をすべて削除
+      while (select.firstChild) {
+        select.removeChild(select.lastChild);
+      }
+      // 書籍分類詳細フォームフィールド（select要素）に選択肢をoption要素として追加
+      filteredDetails.forEach(detail => {
+        let option = document.createElement("option");
+        option.value = detail.code;
+        option.textContent = detail.name;
+        select.appendChild(option);
+      });
+    }
+
+    // ページがロードされた後に実行される関数を登録
+    window.onload = () => {
+      setClassificationDetailOptions();
+    }
+
+    // 書籍分類フォームフィールドの選択が変更された後に実行する関数を登録
+    document.getElementById("{{ form.classification.auto_id }}")
+        .addEventListener("change", (ev) => {
+          setClassificationDetailOptions();
+        });
+  </script>
+{% endblock inner_body %}
