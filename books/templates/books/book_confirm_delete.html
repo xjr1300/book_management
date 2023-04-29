@@ -1,16 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'books/book_base_page.html' %}
+{% load django_bootstrap5 %}
 
-{% block inner_body %}
-  <h1>書籍削除</h1>
-  <p>この書籍を削除しますか?</p>
-  <form method="post">
-    {% csrf_token %}
-    {% include "books/_book_detail.html" %}
-    <button type="submit">削除</button>
-  </form>
-  <div>
-    <a href="{% url 'books:book-list' %}">書籍一覧</a>
-    <a href="{% url 'books:book-detail' pk=book.id %}">書籍詳細</a>
-    <a href="{% url 'books:book-update' pk=book.id %}">書籍更新</a>
+{% block bootstrap5_extra_head %}
+  <style>
+    {% include 'books/_button_width.css' %}
+  </style>
+{% endblock %}
+
+{% block bootstrap5_content %}
+  <div class="container-fluid pb-3">
+    <div>この書籍を削除しますか?</div>
+    <form method="post">
+      {% csrf_token %}
+      {% include "books/_book_detail.html" %}
+      <div class="col">
+        <span>
+          <a href="{% url 'books:book-list' %}">書籍一覧</a>
+          <a href="{% url 'books:book-detail' pk=book.id %}">書籍詳細</a>
+          <a href="{% url 'books:book-update' pk=book.id %}">書籍更新</a>
+        </span>
+        <span class="float-end">
+          {% bootstrap_button '削除' button_type='submit' button_class='btn-danger' extra_classes='button-width' size='sm' %}
+        </span>
+      </div>
+    </form>
   </div>
-{% endblock inner_body %}
+{% endblock bootstrap5_content %}
