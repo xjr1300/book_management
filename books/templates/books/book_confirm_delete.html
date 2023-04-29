@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block inner_body %}
+  <h1>書籍削除</h1>
+  <p>この書籍を削除しますか?</p>
+  <form method="post">
+    {% csrf_token %}
+    {% include "books/_book_detail.html" %}
+    <button type="submit">削除</button>
+  </form>
+  <div>
+    <a href="{% url 'books:book-list' %}">書籍一覧</a>
+    <a href="{% url 'books:book-detail' pk=book.id %}">書籍詳細</a>
+    <a href="{% url 'books:book-update' pk=book.id %}">書籍更新</a>
+  </div>
+{% endblock inner_body %}
