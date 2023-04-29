@@ -1,8 +1,9 @@
 from typing import Any, Dict, Optional
 
 from django import forms
+from django.db import transaction
 from django.db.models import QuerySet
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 
@@ -308,6 +309,10 @@ class BookCreateView(
     title = "書籍登録"
     action = "登録"
 
+    @transaction.atomic
+    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        return super().post(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         ctx = super().get_context_data(**kwargs)
         ctx["classification_details"] = list(
@@ -330,6 +335,10 @@ class BookUpdateView(
     form_class = BookForm
     title = "書籍更新"
     action = "更新"
+
+    @transaction.atomic
+    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        return super().post(request, *args, **kwargs)
 
     def get_initial(self) -> Dict[str, Any]:
         initial = super().get_initial()
@@ -356,3 +365,7 @@ class BookDeleteView(
 
     title = "書籍削除"
     success_url = reverse_lazy("books:book-list")
+
+    @transaction.atomic
+    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        return super().post(request, *args, **kwargs)
