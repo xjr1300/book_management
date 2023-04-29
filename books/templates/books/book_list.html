@@ -1,45 +1,46 @@
-{% extends 'base.html' %}
+{% extends 'books/book_base_page.html' %}
 
-{% block inner_body %}
-  <h1>書籍一覧</h1>
-  {% include 'books/_classification_links.html' %}
-  {% if book_list %}
-    <table>
-      <thead>
-      <tr>
-        <th>タイトル</th>
-        <th>分類</th>
-        <th>分類詳細</th>
-        <th>著者または訳者など</th>
-        <th>出版社</th>
-        <th>管理部署</th>
-        <th>廃棄</th>
-        <th/>
-      </tr>
-      </thead>
-      <tbody>
-      {% for book in book_list %}
+{% block bootstrap5_content %}
+  <div class="container-fluid">
+    {% include 'books/_classification_links.html' %}
+    {% if book_list %}
+      <table class="table table-striped table-hover table-sm ps-3">
+        <thead class="table-dark">
         <tr>
-          <td>{{ book.title }}</td>
-          <td>{{ book.classification_detail.classification }}</td>
-          <td>{{ book.classification_detail }}</td>
-          <td>{% if book.authors %}{{ book.authors | truncatechars:40 }}{% else %}ー{% endif %}</td>
-          <td>{{ book.publisher | default_if_none:"ー" }}</td>
-          <td>{{ book.division }}</td>
-          <td>{{ book.disposed | yesno:"済,ー" }}</td>
-          <td>
-            <a href="{% url 'books:book-detail' pk=book.id %}">詳細</a>
-            <a href="{% url 'books:book-update' pk=book.id %}">更新</a>
-            <a href="{% url 'books:book-delete' pk=book.id %}">削除</a>
-          </td>
+          <th>タイトル</th>
+          <th>分類</th>
+          <th>分類詳細</th>
+          <th>著者または訳者など</th>
+          <th>出版社</th>
+          <th>管理部署</th>
+          <th>廃棄</th>
+          <th/>
         </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <p>書籍が存在しません。</p>
-  {% endif %}
-  <div>
-    <a href="{% url 'books:book-create' %}">書籍登録</a>
+        </thead>
+        <tbody>
+        {% for book in book_list %}
+          <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.classification_detail.classification }}</td>
+            <td>{{ book.classification_detail }}</td>
+            <td>{% if book.authors %}{{ book.authors | truncatechars:40 }}{% else %}ー{% endif %}</td>
+            <td>{{ book.publisher | default_if_none:"ー" }}</td>
+            <td>{{ book.division }}</td>
+            <td>{{ book.disposed | yesno:"済,ー" }}</td>
+            <td>
+              <a href="{% url 'books:book-detail' pk=book.id %}">詳細</a>
+              <a href="{% url 'books:book-update' pk=book.id %}">更新</a>
+              <a href="{% url 'books:book-delete' pk=book.id %}">削除</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="ms-3">書籍が存在しません。</div>
+    {% endif %}
+    <div>
+      <a class="ms-3" href="{% url 'books:book-create' %}">書籍登録</a>
+    </div>
   </div>
-{% endblock inner_body %}
+{% endblock bootstrap5_content %}
