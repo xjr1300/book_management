@@ -1,0 +1,52 @@
+<table>
+  <tr>
+    <th>タイトル</th>
+    <td>{{ book.title }}</td>
+  </tr>
+  <tr>
+    <th>分類</th>
+    <td>{{ book.classification_detail.classification }}</td>
+  </tr>
+  <tr>
+    <th>分類詳細</th>
+    <td>{{ book.classification_detail }}</td>
+  </tr>
+  <tr>
+    <th>著者または訳者</th>
+    <td>{% if book.authors %}{{ book.authors }}{% else %}ー{% endif %}
+  </tr>
+  <tr>
+    <th>ISBN</th>
+    <td>{{ book.isbn | default_if_none:"ー" }}</td>
+  </tr>
+  <tr>
+    <th>出版社</th>
+    <td>{{ book.publisher | default_if_none:"ー" }}</td>
+  </tr>
+  <tr>
+    <th>発行日</th>
+    <td>{{ book.published_at | default_if_none:"ー" }}</td>
+  </tr>
+  <tr>
+    <th>管理部署</th>
+    <td>{{ book.division }}</td>
+  </tr>
+  <tr>
+    <th>廃棄</th>
+    <td>{{ book.disposed | yesno:"済,ー" }}</td>
+  </tr>
+  {% if book.disposed %}
+    <tr>
+      <th>廃棄日</th>
+      <td>{{ book.disposed_at }}</td>
+    </tr>
+  {% endif %}
+  <tr>
+    <th>登録日時</th>
+    <td>{{ book.created_at }}</td>
+  </tr>
+  <tr>
+    <th>更新日時</th>
+    <td>{{ book.updated_at }}</td>
+  </tr>
+</table>

@@ -283,3 +283,13 @@ class BookListView(BookViewMixin, PageTitleMixin, generic.ListView):
         # コンテキストに書籍一覧ページのURLを登録
         ctx["list_page_url"] = reverse("books:book-list")
         return ctx
+
+
+class BookDetailView(
+    BookViewMixin,
+    PageTitleMixin,
+    generic.DetailView,
+):
+    """書籍詳細クラスビュー"""
+
+    title = "書籍詳細"

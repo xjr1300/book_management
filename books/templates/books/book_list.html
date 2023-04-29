@@ -27,7 +27,9 @@
           <td>{{ book.publisher | default_if_none:"ー" }}</td>
           <td>{{ book.division }}</td>
           <td>{{ book.disposed | yesno:"済,ー" }}</td>
-          <td/>
+          <td>
+            <a href="{% url 'books:book-detail' pk=book.id %}">詳細</a>
+          </td>
         </tr>
       {% endfor %}
       </tbody>
