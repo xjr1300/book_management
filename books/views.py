@@ -317,3 +317,31 @@ class BookCreateView(
 
     def get_success_url(self) -> str:
         return reverse("books:book-detail", kwargs={"pk": self.object.id})
+
+
+class BookUpdateView(
+    BookViewMixin,
+    PageTitleMixin,
+    FormActionMixin,
+    generic.UpdateView,
+):
+    """書籍更新ビュー"""
+
+    form_class = BookForm
+    title = "書籍更新"
+    action = "更新"
+
+    def get_initial(self) -> Dict[str, Any]:
+        initial = super().get_initial()
+        initial["classification"] = self.object.classification_detail.classification
+        return initial
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        ctx["classification_details"] = list(
+            ClassificationDetail.objects.all().values("code", "classification", "name")
+        )
+        return ctx
+
+    def get_success_url(self) -> str:
+        return reverse("books:book-detail", kwargs={"pk": self.object.id})

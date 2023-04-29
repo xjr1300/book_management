@@ -8,6 +8,9 @@
   </form>
   <div>
     <a href="{% url 'books:book-list' %}">書籍一覧</a>
+    {% if action == "更新" %}
+      <a href="{% url 'books:book-detail' form.instance.id %}">書籍詳細</a>
+    {% endif %}
   </div>
   <script>
     //
@@ -44,6 +47,13 @@
     // ページがロードされた後に実行される関数を登録
     window.onload = () => {
       setClassificationDetailOptions();
+      // 書籍分類詳細フォームフィールドを取得
+      const select = document.getElementById("{{ form.classification_detail.auto_id }}");
+      // 書籍更新ページの場合は、setClassificationDetailOption関数によって、書籍の書籍分類詳細がクリアされるため
+      // 書籍分類詳細を再設定
+      if ("{{ action }}" === "更新") {
+        select.value = "{{ book.classification_detail.code }}";
+      }
     }
 
     // 書籍分類フォームフィールドの選択が変更された後に実行する関数を登録

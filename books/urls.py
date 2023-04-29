@@ -71,4 +71,6 @@ urlpatterns = [
     path("create/", views.BookCreateView.as_view(), name="book-create"),
     # 書籍詳細ページ (ex: /books/<id>/)
     path("<str:pk>/", views.BookDetailView.as_view(), name="book-detail"),
+    # 書籍更新ページ (ex: /books/update/<id>/)
+    path("update/<str:pk>/", views.BookUpdateView.as_view(), name="book-update"),
 ]

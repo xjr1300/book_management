@@ -29,6 +29,7 @@
           <td>{{ book.disposed | yesno:"済,ー" }}</td>
           <td>
             <a href="{% url 'books:book-detail' pk=book.id %}">詳細</a>
+            <a href="{% url 'books:book-update' pk=book.id %}">更新</a>
           </td>
         </tr>
       {% endfor %}
