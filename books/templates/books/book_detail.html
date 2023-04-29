@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block inner_body %}
+  <h1>書籍詳細</h1>
+  {% include "books/_book_detail.html" %}
+  <div>
+    <a href="{% url 'books:book-list' %}">書籍一覧</a>
+  </div>
+{% endblock inner_body %}

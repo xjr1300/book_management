@@ -67,4 +67,6 @@ urlpatterns = [
     ),
     # 書籍一覧ページ (ex: /books/)
     path("", views.BookListView.as_view(), name="book-list"),
+    # 書籍詳細ページ (ex: /books/<id>/)
+    path("<str:pk>/", views.BookDetailView.as_view(), name="book-detail"),
 ]
