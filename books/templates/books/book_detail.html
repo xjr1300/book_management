@@ -6,5 +6,6 @@
   <div>
     <a href="{% url 'books:book-list' %}">書籍一覧</a>
     <a href="{% url 'books:book-create' %}">書籍登録</a>
+    <a href="{% url 'books:book-update' pk=book.id %}">書籍更新</a>
   </div>
 {% endblock inner_body %}
