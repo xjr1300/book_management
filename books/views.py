@@ -8,6 +8,7 @@ from django.views import generic
 
 from core.mixins import FormActionMixin, PageTitleMixin
 
+from .forms import BookForm
 from .models import Book, Classification, ClassificationDetail
 
 
@@ -293,3 +294,26 @@ class BookDetailView(
     """書籍詳細クラスビュー"""
 
     title = "書籍詳細"
+
+
+class BookCreateView(
+    BookViewMixin,
+    PageTitleMixin,
+    FormActionMixin,
+    generic.CreateView,
+):
+    """書籍登録ビュー"""
+
+    form_class = BookForm
+    title = "書籍登録"
+    action = "登録"
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        ctx["classification_details"] = list(
+            ClassificationDetail.objects.all().values("code", "classification", "name")
+        )
+        return ctx
+
+    def get_success_url(self) -> str:
+        return reverse("books:book-detail", kwargs={"pk": self.object.id})
