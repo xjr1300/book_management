@@ -1,16 +1,22 @@
-<div>
+<div class="nav">
   {% for classification in classification_list %}
-    {% if classification.code != current_classification.code %}
-      <a href="{{ list_page_url }}?classification_code={{ classification.code }}">
-        {{ classification.name }}
-      </a>&thinsp;
-    {% else %}
-      {{ classification.name }}&thinsp;
-    {% endif %}
+    <li class="nav-item">
+      {% if classification.code != current_classification.code %}
+        <a class="nav-link" href="{% url 'books:book-list' %}?classification_code={{ classification.code }}">
+          {{ classification.name }}
+        </a>
+      {% else %}
+        <a class="nav-link active" aria-current="page" href="#">{{ classification.name }}</a>
+      {% endif %}
+    </li>
   {% endfor %}
-  {% if current_classification %}
-    <a href="{{ list_page_url }}">すべて</a>
-  {% else %}
-    すべて
-  {% endif %}
+  <li class="nav-item">
+    {% if current_classification %}
+      <a class="nav-link" href="{% url 'books:book-list' %}">すべて</a>
+    {% else %}
+      <a class="nav-link active" aria-current="page" href="#">
+        すべて
+      </a>
+    {% endif %}
+  </li>
 </div>
