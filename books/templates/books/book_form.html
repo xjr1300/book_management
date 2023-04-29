@@ -1,17 +1,69 @@
-{% extends 'base.html' %}
+{% extends 'books/book_base_page.html' %}
+{% load django_bootstrap5 %}
 
-{% block inner_body %}
-  <h1>書籍{{ action }}</h1>
-  <form method="post">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit">{{ action }}</button>
-  </form>
-  <div>
-    <a href="{% url 'books:book-list' %}">書籍一覧</a>
-    {% if action == "更新" %}
-      <a href="{% url 'books:book-detail' form.instance.id %}">書籍詳細</a>
-      <a href="{% url 'books:book-delete' form.instance.id %}">書籍削除</a>
-    {% endif %}
+{% block bootstrap5_extra_head %}
+  <style>
+    {% include 'books/_button_width.css' %}
+  </style>
+{% endblock %}
+
+{% block bootstrap5_content %}
+  <div class="container-fluid pb-3">
+    <form method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col">
+          {% bootstrap_field form.title size='sm' %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          {% bootstrap_field form.classification size='sm' %}
+        </div>
+        <div class="col">
+          {% bootstrap_field form.classification_detail size='sm' %}
+        </div>
+      </div>
+      <div class="col">
+        {% bootstrap_field form.authors size='sm' %}
+      </div>
+      <div class="row">
+        <div class="col">
+          {% bootstrap_field form.publisher size='sm' %}
+        </div>
+        <div class="col">
+          {% bootstrap_field form.published_at size='sm' %}
+        </div>
+        <div class="col">
+          {% bootstrap_field form.isbn size='sm' %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          {% bootstrap_field form.division size='sm' %}
+        </div>
+        <div class="col-2" style="padding-top:2.2rem">
+          {% bootstrap_field form.disposed size='sm' %}
+        </div>
+        <div class="col-4">
+          {% bootstrap_field form.disposed_at size='sm' %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <span>
+            <a href="{% url 'books:book-list' %}">書籍一覧</a>
+            {% if action == "更新" %}
+              <a href="{% url 'books:book-detail' form.instance.id %}">書籍詳細</a>
+              <a href="{% url 'books:book-delete' form.instance.id %}">書籍削除</a>
+            {% endif %}
+          </span>
+          <span class="float-end">
+            {% bootstrap_button action button_type='submit' button_class='btn-primary' extra_classes='button-width' size='sm' %}
+          </span>
+        </div>
+      </div>
+    </form>
   </div>
   <script>
     //
@@ -63,4 +115,4 @@
           setClassificationDetailOptions();
         });
   </script>
-{% endblock inner_body %}
+{% endblock bootstrap5_content %}
