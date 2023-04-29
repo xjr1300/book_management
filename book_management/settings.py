@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "debug_toolbar",
+    "accounts.apps.AccountsConfig",
     "divisions.apps.DivisionsConfig",
     "books.apps.BooksConfig",
 ]
