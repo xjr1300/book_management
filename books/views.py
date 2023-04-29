@@ -345,3 +345,14 @@ class BookUpdateView(
 
     def get_success_url(self) -> str:
         return reverse("books:book-detail", kwargs={"pk": self.object.id})
+
+
+class BookDeleteView(
+    BookViewMixin,
+    PageTitleMixin,
+    generic.DeleteView,
+):
+    """書籍削除ビュー"""
+
+    title = "書籍削除"
+    success_url = reverse_lazy("books:book-list")

@@ -30,6 +30,7 @@
           <td>
             <a href="{% url 'books:book-detail' pk=book.id %}">詳細</a>
             <a href="{% url 'books:book-update' pk=book.id %}">更新</a>
+            <a href="{% url 'books:book-delete' pk=book.id %}">削除</a>
           </td>
         </tr>
       {% endfor %}
