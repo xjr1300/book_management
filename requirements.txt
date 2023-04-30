@@ -8,6 +8,7 @@ django-bootstrap5==23.1
 django-debug-toolbar==4.0.0
 django-stubs==1.16.0
 django-stubs-ext==0.8.0
+djangorestframework==3.14.0
 flake8==6.0.0
 gitdb==4.0.10
 GitPython==3.1.31
@@ -22,6 +23,7 @@ pycodestyle==2.10.0
 pyflakes==3.0.1
 pysen==0.10.4
 python-ulid==1.1.0
+pytz==2023.3
 PyYAML==6.0
 smmap==5.0.0
 sqlparse==0.4.4
