@@ -7,7 +7,7 @@ from django.http import HttpRequest, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 
-from core.mixins import FormActionMixin, PageTitleMixin
+from core.mixins import FormActionMixin, LoginRequiredMixin, PageTitleMixin
 
 from .forms import BookForm
 from .models import Book, Classification, ClassificationDetail
@@ -301,6 +301,7 @@ class BookCreateView(
     BookViewMixin,
     PageTitleMixin,
     FormActionMixin,
+    LoginRequiredMixin,
     generic.CreateView,
 ):
     """書籍登録ビュー"""
@@ -328,6 +329,7 @@ class BookUpdateView(
     BookViewMixin,
     PageTitleMixin,
     FormActionMixin,
+    LoginRequiredMixin,
     generic.UpdateView,
 ):
     """書籍更新ビュー"""
@@ -359,6 +361,7 @@ class BookUpdateView(
 class BookDeleteView(
     BookViewMixin,
     PageTitleMixin,
+    LoginRequiredMixin,
     generic.DeleteView,
 ):
     """書籍削除ビュー"""
