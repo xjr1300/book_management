@@ -29,8 +29,10 @@
             <td>{{ book.disposed | yesno:"済,ー" }}</td>
             <td>
               <a href="{% url 'books:book-detail' pk=book.id %}">詳細</a>
-              <a href="{% url 'books:book-update' pk=book.id %}">更新</a>
-              <a href="{% url 'books:book-delete' pk=book.id %}">削除</a>
+              {% if user.is_authenticated %}
+                <a href="{% url 'books:book-update' pk=book.id %}">更新</a>
+                <a href="{% url 'books:book-delete' pk=book.id %}">削除</a>
+              {% endif %}
             </td>
           </tr>
         {% endfor %}
@@ -39,8 +41,10 @@
     {% else %}
       <div class="ms-3">書籍が存在しません。</div>
     {% endif %}
-    <div>
-      <a class="ms-3" href="{% url 'books:book-create' %}">書籍登録</a>
-    </div>
+    {% if user.is_authenticated %}
+      <div>
+        <a class="ms-3" href="{% url 'books:book-create' %}">書籍登録</a>
+      </div>
+    {% endif %}
   </div>
 {% endblock bootstrap5_content %}
