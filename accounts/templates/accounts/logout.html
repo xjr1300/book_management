@@ -1,15 +1,13 @@
-{% extends 'bootstrap_base.html' %}
-
-{% block bootstrap5_content %}
+{% extends 'bootstrap_base.html' %} {% block bootstrap5_content %}
   <div class="container-fluid vh-100">
-    <div class="" style="padding-top:200px">
+    <div class="" style="padding-top: 200px">
       <div class="rounded d-flex justify-content-center">
         <div class="col-md-5 col-sm-12 shadow-lg p-5 bg-light">
           <div class="text-center pb-3">
             <h3 class="mb-5 text-primary">書籍アプリ</h3>
             <p>書籍アプリからログアウトしました。</p>
-            <a href="{% url 'books:book_list' %}">書籍一覧ページに移動</a>
-            <a href="{% url 'accounts:login' %}">ログインページに移動</a>
+            <p><a href="{% url 'books:book-list' %}">書籍一覧ページに移動</a></p>
+            <p><a href="{% url 'accounts:login' %}">ログインページに移動</a></p>
           </div>
         </div>
       </div>

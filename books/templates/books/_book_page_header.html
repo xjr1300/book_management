@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h2 class="float-start">{{ title }}</h2>
+      <div class="float-end" style="font-size: 0.85rem;">
+        {% if user.is_anonymous %}
+          <div style="padding-top: 1.25rem;">
+            <a href="{% url 'accounts:login' %}">ログイン</a>
+          </div>
+        {% else %}
+          <p class="mb-0">こんにちは、<b>{{ user.name }}</b> さん。</p>
+          <a class="mb-0 float-end" href="{% url 'accounts:logout' %}">ログアウト</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
