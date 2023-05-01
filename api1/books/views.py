@@ -60,6 +60,7 @@ def classification_detail(request: Request, code: str) -> Response:
 
     elif request.method == "PUT":
         # PUTメソッドの場合は、書籍分類モデルインスタンスを更新して返却
+        # 書籍分類コードの更新は不可
         request.data["code"] = code
         serializer = ClassificationSerializer(instance, data=request.data)
         if serializer.is_valid():
