@@ -3,6 +3,7 @@
     "clickjacking",
     "contenttypes",
     "createsuperuser",
+    "elif",
     "endfor",
     "icontains",
     "isort",
