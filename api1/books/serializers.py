@@ -1,8 +1,8 @@
 from typing import Any
 
-from rest_framework import serializers
+from rest_framework import exceptions, serializers
 
-from books.models import Classification
+from books.models import Classification, ClassificationDetail
 
 
 class ClassificationSerializer(serializers.Serializer):
@@ -44,3 +44,51 @@ class ClassificationSerializer(serializers.Serializer):
         instance.name = validated_data.get("name", instance.name)
         instance.save()
         return instance
+
+
+class ClassificationDetailUpdateSerializer(serializers.ModelSerializer):
+    """書籍分類詳細更新用シリアライザー"""
+
+    # 書籍分類コード
+    classification_code = serializers.CharField(
+        max_length=3, source="classification", label="書籍分類コード"
+    )
+
+    class Meta:
+        model = ClassificationDetail
+        fields = [
+            "classification_code",
+            "name",
+        ]
+
+    def _get_classification(self, classification_code: str) -> Classification:
+        """書籍分類コードから書籍分類モデルインスタンスを取得する。
+
+        Args:
+            classification_code: 書籍分類コード。
+        Returns:
+            書籍分類モデルインスタンス。
+        Exceptions:
+            rest_framework.exceptions.NotFound: 書籍分類が見つからない場合。
+        """
+        try:
+            return Classification.objects.get(code=classification_code)
+        except Classification.DoesNotExist:
+            raise exceptions.NotFound(detail="Classification doesn't exist")
+
+    def update(
+        self, instance: ClassificationDetail, validated_data: Any
+    ) -> ClassificationDetail:
+        """書籍分類詳細を更新する。
+
+        Args:
+            validated_data: 書籍分類詳細シリアライザーが検証したデータ。
+        Returns:
+            更新した書籍分類詳細モデルインスタンス。
+        Exceptions:
+            rest_framework.exceptions.NotFound: 書籍分類が見つからない場合。
+        """
+        validated_data["classification"] = self._get_classification(
+            validated_data["classification"]
+        )
+        return super().update(instance, validated_data)
