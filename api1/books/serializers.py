@@ -92,3 +92,52 @@ class ClassificationDetailUpdateSerializer(serializers.ModelSerializer):
             validated_data["classification"]
         )
         return super().update(instance, validated_data)
+
+
+class ClassificationDetailSerializer(ClassificationDetailUpdateSerializer):
+    """書籍分類詳細シリアライザー"""
+
+    # 書籍分類名
+    classification_name = serializers.SerializerMethodField(
+        "_get_classification_name", label="書籍分類名"
+    )
+    # 作成日時
+    created_at = serializers.DateTimeField(read_only=True)
+    # 更新日時
+    updated_at = serializers.DateTimeField(read_only=True)
+
+    class Meta:
+        model = ClassificationDetail
+        fields = [
+            "code",
+            "classification_code",
+            "classification_name",
+            "name",
+            "created_at",
+            "updated_at",
+        ]
+
+    def _get_classification_name(self, obj: ClassificationDetail) -> str:
+        """書籍分類名を返却する。
+
+        Args:
+            obj: 書籍分類詳細モデルインスタンス。
+        Returns:
+            書籍分類名。
+        """
+        return obj.classification.name
+
+    def create(self, validated_data: Any) -> ClassificationDetail:
+        """書籍分類詳細を登録する。
+
+        Args:
+            validated_data: 書籍分類詳細シリアライザーが検証したデータ。
+        Returns:
+            作成した書籍分類詳細モデルインスタンス。
+        Exceptions:
+            rest_framework.exceptions.NotFound: 書籍分類が見つからない場合。
+        """
+        validated_data["classification"] = self._get_classification(
+            validated_data["classification"]
+        )
+        return super().create(validated_data)
