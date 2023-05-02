@@ -1,11 +1,15 @@
-from rest_framework import status
+from rest_framework import generics, serializers, status
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from books.models import Classification
+from books.models import Classification, ClassificationDetail
 
-from .serializers import ClassificationSerializer
+from .serializers import (
+    ClassificationDetailSerializer,
+    ClassificationDetailUpdateSerializer,
+    ClassificationSerializer,
+)
 
 
 @api_view(["GET", "POST"])
@@ -72,3 +76,23 @@ def classification_detail(request: Request, code: str) -> Response:
         # DELETEメソッドの場合は、書籍分類モデルインスタンスを削除
         instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ClassificationDetailListCreateView(generics.ListCreateAPIView):
+    """書籍分類詳細一覧登録ビュー"""
+
+    queryset = ClassificationDetail.objects.all()
+    serializer_class = ClassificationDetailSerializer
+
+
+class ClassificationRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    """書籍分類詳細更新削除ビュー"""
+
+    queryset = ClassificationDetail.objects.all()
+    serializer_class = ClassificationDetailSerializer
+    lookup_field = "code"
+
+    def get_serializer_class(self) -> serializers.Serializer:
+        if self.request.method.lower() in ("put", "patch"):
+            return ClassificationDetailUpdateSerializer
+        return super().get_serializer_class()
