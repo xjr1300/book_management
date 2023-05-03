@@ -1,11 +1,13 @@
-from rest_framework import generics, serializers, status
+from rest_framework import generics, serializers, status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from books.models import Classification, ClassificationDetail
+from books.models import Book, Classification, ClassificationDetail
 
 from .serializers import (
+    BookReadOnlySerializer,
+    BookWriteOnlySerializer,
     ClassificationDetailSerializer,
     ClassificationDetailUpdateSerializer,
     ClassificationSerializer,
@@ -96,3 +98,20 @@ class ClassificationRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIV
         if self.request.method.lower() in ("put", "patch"):
             return ClassificationDetailUpdateSerializer
         return super().get_serializer_class()
+
+
+class BookViewSet(viewsets.ModelViewSet):
+    """書籍ビューセット"""
+
+    queryset = Book.objects.all()
+    serializer_class = BookReadOnlySerializer
+
+    def get_serializer_class(self) -> serializers.Serializer:
+        """書籍シリアライザークラスを返却する。
+
+        Returns:
+            書籍シリアライザー。
+        """
+        if self.request.method.lower() in ("post", "put", "patch", "delete"):
+            return BookWriteOnlySerializer
+        return BookReadOnlySerializer
