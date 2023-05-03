@@ -20,6 +20,7 @@
     "pyvenv",
     "pyyaml",
     "queryset",
+    "simplejwt",
     "sqlmigrate",
     "startapp",
     "startswith",
