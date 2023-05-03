@@ -1,5 +1,5 @@
-from django.urls import include, path
-from rest_framework.urlpatterns import format_suffix_patterns
+from django.urls import path
+from rest_framework.routers import DefaultRouter
 
 from .books import views
 
@@ -15,3 +15,9 @@ urlpatterns = [
         views.ClassificationRetrieveUpdateDestroyView.as_view(),
     ),
 ]
+
+
+# 書籍ビューセットをディスパッチ
+router = DefaultRouter()
+router.register("books", viewset=views.BookViewSet)
+urlpatterns += router.urls
