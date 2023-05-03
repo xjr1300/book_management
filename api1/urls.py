@@ -1,5 +1,6 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from .books import views
 
@@ -14,6 +15,8 @@ urlpatterns = [
         "books/classification-details/<str:code>/",
         views.ClassificationRetrieveUpdateDestroyView.as_view(),
     ),
+    path("auth/token/", TokenObtainPairView.as_view()),
+    path("auth/token/refresh/", TokenRefreshView.as_view()),
 ]
 
 
