@@ -1,4 +1,4 @@
-from rest_framework import generics, serializers, status, viewsets
+from rest_framework import generics, permissions, serializers, status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -102,6 +102,9 @@ class BookViewSet(viewsets.ModelViewSet):
 
     queryset = Book.objects.all()
     serializer_class = BookReadOnlySerializer
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+    ]
 
     def get_serializer_class(self) -> serializers.Serializer:
         """書籍シリアライザークラスを返却する。
