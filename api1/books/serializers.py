@@ -206,3 +206,105 @@ class BookReadOnlySerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         )
+
+
+class BookWriteOnlySerializer(serializers.ModelSerializer):
+    """書籍書き込み専用シリアライザー"""
+
+    # 書籍ID
+    id = serializers.CharField(max_length=26, read_only=True)
+    # 書籍分類詳細コード
+    classification_detail_code = serializers.CharField(
+        max_length=3, source="classification_detail", label="書籍分類詳細コード"
+    )
+    # 管理部署コード
+    division_code = serializers.CharField(
+        max_length=2, source="division", label="管理部署コード"
+    )
+
+    class Meta:
+        model = Book
+        fields = (
+            "id",
+            "title",
+            "classification_detail_code",
+            "authors",
+            "isbn",
+            "publisher",
+            "published_at",
+            "division_code",
+            "disposed",
+            "disposed_at",
+        )
+
+    def _get_classification_detail(self, code: str) -> ClassificationDetail:
+        """書籍分類詳細コードから書籍分類詳細モデルインスタンスを取得して返却する。
+
+        Args:
+            code: 書籍分類詳細コード。
+        Returns:
+            書籍分類詳細モデルインスタンス。
+        Exceptions:
+            rest_framework.exceptions.NotFound: 書籍分類詳細が見つからない場合。
+        """
+        try:
+            return ClassificationDetail.objects.get(code=code)
+        except ClassificationDetail.DoesNotExist:
+            raise exceptions.NotFound(detail="Classification detail doesn't exist")
+
+    def _get_division(self, code: str) -> Division:
+        """部署コードから部署モデルインスタンスを取得して返却する。
+
+        Args:
+            code: 部署コード。
+        Returns:
+            部署モデルインスタンス。
+        Exceptions:
+            rest_framework.exceptions.NotFound: 部署が見つからない場合。
+        """
+        try:
+            return Division.objects.get(code=code)
+        except Division.DoesNotExist:
+            raise exceptions.NotFound(detail="Division doesn't exist")
+
+    def _organize_validated_data(self, validated_data: Any) -> Any:
+        """書籍書き込みシリアライザーが検証したデータを整理する。
+
+        書籍書き込みシリアライザーが検証したデータに、書籍分類詳細及び部署モデルインスタンスを設定する。
+
+        Args:
+            validated_data: 書籍書き込みシリアライザーが検証したデータ。
+        Returns:
+            書籍書き込みシリアライザーが検証したデータを整理した結果。
+        Exceptions:
+            rest_framework.exceptions.NotFound: 書籍分類詳細または部署が見つからない場合。
+        """
+        validated_data["classification_detail"] = self._get_classification_detail(
+            validated_data["classification_detail"]
+        )
+        validated_data["division"] = self._get_division(validated_data["division"])
+        return validated_data
+
+    def create(self, validated_data: Any) -> Book:
+        """書籍を登録する。
+
+        Args:
+            validated_data: 書籍書き込み専用シリアライザーが検証したデータ。
+        Returns:
+            作成した書籍モデルインスタンス。
+        Exceptions:
+            rest_framework.exceptions.NotFound: 書籍分類詳細または部署が見つからない場合。
+        """
+        return super().create(self._organize_validated_data(validated_data))
+
+    def update(self, instance: Any, validated_data: Any) -> Book:
+        """書籍を更新する。
+
+        Args:
+            validated_data: 書籍書き込み専用シリアライザーが検証したデータ。
+        Returns:
+            更新した書籍モデルインスタンス。
+        Exceptions:
+            rest_framework.exceptions.NotFound: 書籍分類詳細または部署が見つからない場合。
+        """
+        return super().update(instance, self._organize_validated_data(validated_data))
