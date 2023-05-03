@@ -2,7 +2,8 @@ from typing import Any
 
 from rest_framework import exceptions, serializers
 
-from books.models import Classification, ClassificationDetail
+from books.models import Book, Classification, ClassificationDetail
+from divisions.models import Division
 
 
 class ClassificationSerializer(serializers.Serializer):
@@ -141,3 +142,67 @@ class ClassificationDetailSerializer(ClassificationDetailUpdateSerializer):
             validated_data["classification"]
         )
         return super().create(validated_data)
+
+
+class ClassificationReadOnlySerializer(serializers.ModelSerializer):
+    """書籍分類モデル読み込み専用シリアライザー"""
+
+    class Meta:
+        model = Classification
+        fields = (
+            "code",
+            "name",
+        )
+
+
+class ClassificationDetailReadOnlySerializer(serializers.ModelSerializer):
+    """書籍分類詳細モデル読み込み専用シリアライザー"""
+
+    classification = ClassificationReadOnlySerializer(label="書籍分類")
+
+    class Meta:
+        model = Classification
+        fields = (
+            "code",
+            "classification",
+            "name",
+        )
+
+
+class DivisionReadOnlySerializer(serializers.ModelSerializer):
+    """部署読み込み専用モデルシリアライザー"""
+
+    class Meta:
+        model = Division
+        fields = (
+            "code",
+            "name",
+        )
+
+
+class BookReadOnlySerializer(serializers.ModelSerializer):
+    """書籍読み込み専用シリアライザー"""
+
+    # 書籍ID
+    id = serializers.CharField(label="書籍ID")
+    # 書籍分類詳細
+    classification_detail = ClassificationDetailReadOnlySerializer(label="書籍分類詳細")
+    # 管理部署
+    division = DivisionReadOnlySerializer(label="管理部署")
+
+    class Meta:
+        model = Book
+        fields = (
+            "id",
+            "title",
+            "classification_detail",
+            "authors",
+            "isbn",
+            "publisher",
+            "published_at",
+            "division",
+            "disposed",
+            "disposed_at",
+            "created_at",
+            "updated_at",
+        )
