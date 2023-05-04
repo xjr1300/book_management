@@ -6,3 +6,6 @@ lint:
 format:
 	isort .
 	black .
+
+type-check:
+	mypy .

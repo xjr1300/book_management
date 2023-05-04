@@ -69,7 +69,7 @@ class ClassificationDetail(TimestampModel):
         Returns:
             書籍分類詳細モデルのフルネーム。
         """
-        return f"{self.code}: {self.name.name}"
+        return f"{self.code}: {self.name}"
 
 
 class Book(TimestampModel):
