@@ -5,10 +5,13 @@ from rest_framework.response import Response
 
 from books.models import Book, Classification, ClassificationDetail
 
-from .serializers import (BookReadOnlySerializer, BookWriteOnlySerializer,
-                          ClassificationDetailSerializer,
-                          ClassificationDetailUpdateSerializer,
-                          ClassificationSerializer)
+from .serializers import (
+    BookReadOnlySerializer,
+    BookWriteOnlySerializer,
+    ClassificationDetailSerializer,
+    ClassificationDetailUpdateSerializer,
+    ClassificationSerializer,
+)
 
 
 @api_view(["GET", "POST"])
