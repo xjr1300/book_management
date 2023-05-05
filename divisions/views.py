@@ -22,7 +22,7 @@ class DivisionSingleObjectMixin:
 
 
 class DivisionFormMixin:
-    """部署フォームドミックスイン"""
+    """部署フォームミックスイン"""
 
     fields = ("code", "name")
 
