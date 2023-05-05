@@ -3,5 +3,5 @@ venv/
 .DS_Store
 *.py[cod]
 db.sqlite3
-.mypy_cache
+.mypy_cache/
 .idea/
