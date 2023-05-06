@@ -4,12 +4,12 @@
     created_at: 2023-04-25 00:00:00+00:00
     updated_at: 2023-04-25 00:00:00+00:00
     title: Fluent Python
-    classification_detail: '000'
+    classification_detail: "000"
     authors: "（著）Luciano Ramalho\r\n（監修）豊沢　聡、桑井　博之\r\n（訳）梶原　玲子"
     isbn: ISBN978-4-87311-817-8
     publisher: オライリー・ジャパン
     published_at: 2017-10-11
-    division: '58'
+    division: "58"
     disposed: false
     disposed_at: null
 - model: books.book
@@ -18,14 +18,12 @@
     created_at: 2023-04-25 00:00:00+00:00
     updated_at: 2023-04-25 00:00:00+00:00
     title: プログラミングRust
-    classification_detail: '000'
-    authors: '（著）Jim Blandy、Jason Orendorff
-
-      （訳）中田　秀基'
+    classification_detail: "000"
+    authors: '（著）Jim Blandy、Jason Orendorff\r\n（訳）中田　秀基'
     isbn: ISBN978-4-87311-855-0
     publisher: オライリー・ジャパン
     published_at: 2018-08-08
-    division: '58'
+    division: "58"
     disposed: false
     disposed_at: null
 - model: books.book
@@ -34,12 +32,12 @@
     created_at: 2023-04-25 00:00:00+00:00
     updated_at: 2023-04-25 00:00:00+00:00
     title: プロを目指す人のためのTypeScript入門
-    classification_detail: '000'
+    classification_detail: "000"
     authors: 鈴木  僚太
     isbn: ISBN978-4-297-12747-3
     publisher: 技術評論社
     published_at: 2022-05-05
-    division: '58'
+    division: "58"
     disposed: false
     disposed_at: null
 - model: books.book
@@ -48,11 +46,11 @@
     created_at: 2023-05-03 05:23:10.081405+00:00
     updated_at: 2023-05-03 05:53:14.639192+00:00
     title: ハンズオンWebAssembly
-    classification_detail: '000'
+    classification_detail: "000"
     authors: "（著）Gerard Gallant\r\n（訳）北原　憲、洲崎　俊、西谷　完太、磯野　亘平、米内　貴志"
     isbn: ISBN978-4-8144-0010-2
     publisher: オライリー・ジャパン
     published_at: 2022-10-07
-    division: '58'
+    division: "58"
     disposed: false
     disposed_at: null
