@@ -1,18 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
-from django.contrib.auth.forms import UserChangeForm as DjangoUserChangeForm
-from django.contrib.auth.forms import UserCreationForm as DjangoUserCreationForm
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.utils.translation import gettext_lazy as _
 
 from .models import User
-
-
-class UserCreationForm(DjangoUserCreationForm):
-    """ユーザー作成フォーム"""
-
-
-class UserChangeForm(DjangoUserChangeForm):
-    """ユーザー作成フォーム"""
 
 
 class UserAdmin(DjangoUserAdmin):
