@@ -48,7 +48,7 @@ class ClassificationSerializer(serializers.Serializer):
 
 
 class ClassificationDetailUpdateSerializer(serializers.ModelSerializer):
-    """書籍分類詳細更新用シリアライザー"""
+    """更新用の書籍分類詳細更新用シリアライザー"""
 
     # 書籍分類コード
     classification_code = serializers.CharField(
@@ -96,7 +96,7 @@ class ClassificationDetailUpdateSerializer(serializers.ModelSerializer):
 
 
 class ClassificationDetailSerializer(ClassificationDetailUpdateSerializer):
-    """書籍分類詳細シリアライザー"""
+    """一覧、詳細、登録及び削除用の書籍分類詳細シリアライザー"""
 
     # 書籍分類名
     classification_name = serializers.SerializerMethodField(
