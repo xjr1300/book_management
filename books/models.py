@@ -95,7 +95,7 @@ class Book(TimestampModel):
     publisher = models.CharField("出版社", max_length=80, null=True, blank=True)
     # 発行日
     published_at = models.DateField("発行日", null=True, blank=True)
-    # 管理部署コード
+    # 管理部署
     division = models.ForeignKey(
         "divisions.Division",
         db_column="division_code",
