@@ -268,14 +268,14 @@ class BookWriteOnlySerializer(serializers.ModelSerializer):
             raise exceptions.NotFound(detail="Division doesn't exist")
 
     def _organize_validated_data(self, validated_data: Any) -> Any:
-        """書籍書き込みシリアライザーが検証したデータを整理する。
+        """書き込み専用書籍シリアライザーが検証したデータを整理する。
 
-        書籍書き込みシリアライザーが検証したデータに、書籍分類詳細及び部署モデルインスタンスを設定する。
+        書き込み専用書籍シリアライザーが検証したデータに、書籍分類詳細及び部署モデルインスタンスを設定する。
 
         Args:
-            validated_data: 書籍書き込みシリアライザーが検証したデータ。
+            validated_data: 書き込み専用書籍シリアライザーが検証したデータ。
         Returns:
-            書籍書き込みシリアライザーが検証したデータを整理した結果。
+            書き込み専用書籍シリアライザーが検証したデータを整理した結果。
         Exceptions:
             rest_framework.exceptions.NotFound: 書籍分類詳細または部署が見つからない場合。
         """
@@ -289,7 +289,7 @@ class BookWriteOnlySerializer(serializers.ModelSerializer):
         """書籍を登録する。
 
         Args:
-            validated_data: 書籍書き込み専用シリアライザーが検証したデータ。
+            validated_data: 書き込み専用書籍シリアライザーが検証したデータ。
         Returns:
             作成した書籍モデルインスタンス。
         Exceptions:
@@ -301,7 +301,7 @@ class BookWriteOnlySerializer(serializers.ModelSerializer):
         """書籍を更新する。
 
         Args:
-            validated_data: 書籍書き込み専用シリアライザーが検証したデータ。
+            validated_data: 書き込み専用書籍シリアライザーが検証したデータ。
         Returns:
             更新した書籍モデルインスタンス。
         Exceptions:
