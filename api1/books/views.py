@@ -88,7 +88,7 @@ class ClassificationDetailListCreateView(generics.ListCreateAPIView):
 
 
 class ClassificationRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    """書籍分類詳細更新削除ビュー"""
+    """書籍分類詳細詳細更新削除ビュー"""
 
     queryset = ClassificationDetail.objects.all()
     serializer_class = ClassificationDetailSerializer
