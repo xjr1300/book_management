@@ -145,7 +145,7 @@ class ClassificationDetailSerializer(ClassificationDetailUpdateSerializer):
 
 
 class ClassificationReadOnlySerializer(serializers.ModelSerializer):
-    """書籍分類モデル読み込み専用シリアライザー"""
+    """読み込み専用書籍分類モデルシリアライザー"""
 
     class Meta:
         model = Classification
@@ -156,7 +156,7 @@ class ClassificationReadOnlySerializer(serializers.ModelSerializer):
 
 
 class ClassificationDetailReadOnlySerializer(serializers.ModelSerializer):
-    """書籍分類詳細モデル読み込み専用シリアライザー"""
+    """読み込み専用書籍分類詳細モデルシリアライザー"""
 
     classification = ClassificationReadOnlySerializer(label="書籍分類")
 
@@ -170,7 +170,7 @@ class ClassificationDetailReadOnlySerializer(serializers.ModelSerializer):
 
 
 class DivisionReadOnlySerializer(serializers.ModelSerializer):
-    """部署読み込み専用モデルシリアライザー"""
+    """読み込み専用部署モデルシリアライザー"""
 
     class Meta:
         model = Division
@@ -181,7 +181,7 @@ class DivisionReadOnlySerializer(serializers.ModelSerializer):
 
 
 class BookReadOnlySerializer(serializers.ModelSerializer):
-    """書籍読み込み専用シリアライザー"""
+    """読み込み専用書籍シリアライザー"""
 
     # 書籍ID
     id = serializers.CharField(label="書籍ID")
@@ -209,7 +209,7 @@ class BookReadOnlySerializer(serializers.ModelSerializer):
 
 
 class BookWriteOnlySerializer(serializers.ModelSerializer):
-    """書籍書き込み専用シリアライザー"""
+    """書き込み専用書籍シリアライザー"""
 
     # 書籍ID
     id = serializers.CharField(max_length=26, read_only=True)
